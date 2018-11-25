@@ -1,10 +1,9 @@
-package pl.sda.chat.server;
+package pl.sdacademy.chat.server;
 
-import pl.sda.chat.model.ChatMessage;
+import pl.sdacademy.chat.model.ChatMessage;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class ServerSocketReaderRunnable implements Runnable {
@@ -18,22 +17,20 @@ public class ServerSocketReaderRunnable implements Runnable {
 
     @Override
     public void run() {
-        boolean register = chatLog.register(client);
-        if (register) {
+        if (chatLog.register(client)) {
             try (ObjectInputStream feedbackMessage = new ObjectInputStream(client.getInputStream())) {
-                ChatMessage message;
                 while (true) {
-                    message = (ChatMessage) feedbackMessage.readObject();
+                    ChatMessage message = (ChatMessage) feedbackMessage.readObject();
 
-                    if (message.getMessage().equalsIgnoreCase("exit")) {
+                    if (message.getMessage().equalsIgnoreCase("exit") || message.getMessage() == null) {
                         break;
                     }
                     chatLog.acceptMessage(message);
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println("### Client disconnected due to network problem ###");
             } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+                System.out.println("### Client disconnected due to invalid format ###");
             }
             chatLog.unregister(client);
         }

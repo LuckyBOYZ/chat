@@ -1,7 +1,7 @@
-package pl.sda.chat.server;
+package pl.sdacademy.chat.server;
 
-import pl.sda.chat.model.ChatMessage;
-import pl.sda.chat.model.DatedChatMessage;
+import pl.sdacademy.chat.model.ChatMessage;
+import pl.sdacademy.chat.model.DatedChatMessage;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;

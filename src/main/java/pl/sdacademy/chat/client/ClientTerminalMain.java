@@ -1,4 +1,4 @@
-package pl.sda.chat.client;
+package pl.sdacademy.chat.client;
 
 import java.io.IOException;
 

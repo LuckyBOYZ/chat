@@ -1,6 +1,6 @@
-package pl.sda.chat.client;
+package pl.sdacademy.chat.client;
 
-import pl.sda.chat.model.ChatMessage;
+import pl.sdacademy.chat.model.ChatMessage;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -12,7 +12,7 @@ public class ClientTerminal implements Runnable {
     private final Socket connectionsToServer;
 
     public ClientTerminal() throws IOException {
-        connectionsToServer = new Socket("IP", 5567);
+        connectionsToServer = new Socket("192.168.8.4", 5567);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package pl.sda.chat.model;
+package pl.sdacademy.chat.model;
 
 import org.junit.Test;
 
