@@ -2,24 +2,23 @@ package pl.sda.chat.model;
 
 import org.junit.Test;
 
-import java.time.LocalDate;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class DatedChatMessageTest {
 
     @Test
     public void shouldReturnCorrectValuesInObjectChatMessage(){
         //given
-        DatedChatMessage datedChatMessage = new DatedChatMessage(new ChatMessage("xxx" , "yyy"));
+        String author = "Łukasz";
+        String message = "Hello";
+        ChatMessage chatMessage = new ChatMessage(author, message);
         //when
-        String author = datedChatMessage.getAuthor();
-        String message = datedChatMessage.getMessage();
-        LocalDate receiveDate = datedChatMessage.getReceiveDate();
+        DatedChatMessage datedChatMessage = new DatedChatMessage(chatMessage);
         //then
-        assertEquals("xxx" , author);
-        assertEquals("yyy" , message);
-        assertNotNull(receiveDate);
+        assertEquals(author , datedChatMessage.getAuthor());
+        assertEquals(message , datedChatMessage.getMessage());
+        assertNotNull(datedChatMessage.getReceiveDate());
     }
 
 }
